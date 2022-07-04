@@ -7,9 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "lib/**/*"
   ],
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Luis Felipe Barrera Cervantes",
+  "license": "ISC",
+  "dependencies": {
+    "delay": "^5.0.0"
+  }
 }
