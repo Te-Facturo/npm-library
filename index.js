@@ -51,6 +51,13 @@ const getCamposTicket = (inputCampos, endpointCampos) => {
   return fields;
 }
 
+const rfcSplitter = (rfc) => {
+  const words = rfc.match(/^.{0,3}/gi)[0];
+  const date = rfc.match(/[0-9A-Fa-f]{6}/g)[0];
+  const key = rfc.match(/.{3}$/gi)[0];
+  return {words, date, key}
+}
+
 const capWord = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1)
 }
@@ -139,6 +146,7 @@ const alseaGetInvoiceDownloadable = (root) => {
 
 module.exports = {
   resolveRecaptcha,
+  rfcSplitter,
   resolveTextCaptcha,
   validateCamposImagen,
   getCamposTicket,
