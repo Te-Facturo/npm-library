@@ -18,7 +18,8 @@
   "author": "Luis Felipe Barrera Cervantes",
   "license": "ISC",
   "dependencies": {
-    "delay": "^5.0.0",
-    "axios": "^0.27.2"
+    "@te-facturo/library": "^1.1.21",
+    "axios": "^0.27.2",
+    "delay": "^5.0.0"
   }
 }
