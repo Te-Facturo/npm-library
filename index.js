@@ -139,6 +139,7 @@ const alseaGetInvoiceDownloadable = (root) => {
 
 module.exports = {
   resolveRecaptcha,
+  resolveTextCaptcha,
   validateCamposImagen,
   getCamposTicket,
   capWord,
