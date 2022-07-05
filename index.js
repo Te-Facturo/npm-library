@@ -1,15 +1,22 @@
 const { reCaptchaCrack, validateCaptcha, textCaptchaCrack } = require('./lib/captchaLib');
-const { textCaptcha } = require('./lib/reqConfig');
 
 //#region Global Functions
 const resolveRecaptcha = async (captchaOptions) => {
   return new Promise(async (resolve, reject) => {
-    let initCaptcha
-    if(captchaOptions.type = 'text'){
-      initCaptcha = await textCaptchaCrack(captchaOptions);
-    } else if (captchaOptions.type = 'reCap'){
-      initCaptcha = await reCaptchaCrack(captchaOptions);
+    const initCaptcha = await reCaptchaCrack(captchaOptions);
+    const validateResult = await validateCaptcha(captchaOptions, initCaptcha);
+    const result = {
+      resolved: validateResult.cracked,
+      responseToken: validateResult.responseToken,
+      duration: validateResult.time,
     }
+    resolve(result);
+  });
+}
+
+const resolveTextCaptcha = async (captchaOptions) => {
+  return new Promise(async (resolve, reject) => {
+    const initCaptcha = await textCaptchaCrack(captchaOptions);
     const validateResult = await validateCaptcha(captchaOptions, initCaptcha);
     const result = {
       resolved: validateResult.cracked,
