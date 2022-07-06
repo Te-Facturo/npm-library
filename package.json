@@ -20,6 +20,7 @@
   "dependencies": {
     "@te-facturo/library": "^1.1.23",
     "axios": "^0.27.2",
-    "delay": "^5.0.0"
+    "delay": "^5.0.0",
+    "node-fetch": "^2.0.0"
   }
 }

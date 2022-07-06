@@ -1,4 +1,5 @@
 const { reCaptchaCrack, validateCaptcha, textCaptchaCrack } = require('./lib/captchaLib');
+const fetch = require('node-fetch');
 
 //#region Global Functions
 const resolveRecaptcha = async (captchaOptions) => {
@@ -25,6 +26,19 @@ const resolveTextCaptcha = async (captchaOptions) => {
     }
     resolve(result);
   });
+}
+
+const getCookies = async (url) => {
+  try {
+    const response = await fetch(url);
+    const result = {
+      cookies: response.headers.raw()['set-cookie'],
+      body: response.body
+    }
+    return result
+  } catch (error) {
+    console.log('error :>> ', error);
+  }
 }
 
 const validateCamposImagen = (imagen_id, camposInput, camposCatalogo) => {
@@ -146,6 +160,7 @@ const alseaGetInvoiceDownloadable = (root) => {
 
 module.exports = {
   resolveRecaptcha,
+  getCookies,
   rfcSplitter,
   resolveTextCaptcha,
   validateCamposImagen,
