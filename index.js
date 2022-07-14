@@ -33,7 +33,6 @@ const getCookies = async (url) => {
     const response = await fetch(url);
     const result = {
       cookies: response.headers.raw()['set-cookie'],
-      body: response.body
     }
     return result
   } catch (error) {
