@@ -30,13 +30,21 @@ const resolveTextCaptcha = async (captchaOptions) => {
 
 const getCookies = async (url) => {
   try {
+    let result;
     const response = await fetch(url);
-    const result = {
-      cookies: response.headers.raw()['set-cookie'],
+    if(response.headers.raw()['set-cookie']){
+      result = {
+        cookies: response.headers.raw()['set-cookie'],
+      }
+    } else {
+      result = {
+        cookies: null
+      }
     }
+    
     return result
   } catch (error) {
-    console.log('error :>> ', error);
+    console.log('error :>> ', error); 
   }
 }
 
